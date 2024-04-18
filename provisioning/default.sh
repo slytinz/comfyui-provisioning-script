@@ -2,7 +2,7 @@
 
 # This file will be sourced in init.sh
 
-# https://raw.githubusercontent.com/ai-dock/comfyui/main/config/provisioning/default.sh
+# https://raw.githubusercontent.com/slytinz/comfyui-provisioning-script/main/provisioning/default.sh
 
 # Packages are installed after nodes so we can fix them...
 
@@ -12,9 +12,6 @@ PYTHON_PACKAGES=(
 
 NODES=(
     "https://github.com/ltdrdata/ComfyUI-Manager"
-    "https://github.com/WASasquatch/was-node-suite-comfyui"
-    "https://github.com/pythongosssss/ComfyUI-Custom-Scripts"
-    "https://github.com/abel-garcia/comfyui-webhook-http"
 )
 
 CHECKPOINT_MODELS=(
