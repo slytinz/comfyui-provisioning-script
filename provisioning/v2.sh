@@ -2,7 +2,9 @@
 
 # This file will be sourced in init.sh
 
-# https://raw.githubusercontent.com/ai-dock/comfyui/main/config/provisioning/default.sh
+# https://raw.githubusercontent.com/slytinz/comfyui-provisioning-script/main/provisioning/v1.sh
+
+# Created: April 18, 2024
 
 # Packages are installed after nodes so we can fix them...
 
@@ -67,7 +69,6 @@ function provisioning_start() {
     DISK_GB_AVAILABLE=$(($(df --output=avail -m "${WORKSPACE}" | tail -n1) / 1000))
     DISK_GB_USED=$(($(df --output=used -m "${WORKSPACE}" | tail -n1) / 1000))
     DISK_GB_ALLOCATED=$(($DISK_GB_AVAILABLE + $DISK_GB_USED))
-    provisioning_install_aria2
     provisioning_print_header
     provisioning_get_nodes
     provisioning_install_python_packages
@@ -87,16 +88,6 @@ function provisioning_start() {
         "${WORKSPACE}/storage/stable_diffusion/models/esrgan" \
         "${ESRGAN_MODELS[@]}"
     provisioning_print_end
-}
-
-function provisioning_install_aria2() {
-    printf "Installing aria2...\n"
-    if command -v aria2c &> /dev/null; then
-        printf "aria2c is already installed.\n"
-    else
-        apt-get update
-        apt-get install -y aria2
-    fi
 }
 
 function provisioning_get_nodes() {
@@ -161,20 +152,7 @@ function provisioning_print_end() {
 
 # Download from $1 URL to $2 file path
 function provisioning_download() {
-    aria2c -q \
-        --dir="$2" \
-        --out="$(basename "$1")" \
-        --continue=true \
-        --conditional-get=true \
-        --allow-overwrite=true \
-        --http-accept-gzip=true \
-        --auto-file-renaming=false \
-        --max-connection-per-server=16 \
-        --split=16 \
-        --max-tries=0 \
-        --retry-wait=20 \
-        --timeout=120 \
-        "$1"
+    curl -sSLJO "$1" -o "$2"
 }
 
 provisioning_start
