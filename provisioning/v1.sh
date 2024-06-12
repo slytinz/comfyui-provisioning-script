@@ -153,7 +153,8 @@ function provisioning_print_end() {
 # Download from $1 URL to $2 file path
 function provisioning_download() {
     # wget -qnc --content-disposition --show-progress -e dotbytes="${3:-4M}" -P "$2" "$1"
-    wget -nc --content-disposition --show-progress -e dotbytes="${3:-4M}" -P "$2" "$1"
+    wget --content-disposition --show-progress -P "$2" "$1"
+
 }
 
 provisioning_start
