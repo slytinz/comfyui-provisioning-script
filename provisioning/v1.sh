@@ -17,6 +17,7 @@ NODES=(
     "https://github.com/WASasquatch/was-node-suite-comfyui"
     "https://github.com/pythongosssss/ComfyUI-Custom-Scripts"
     "https://github.com/abel-garcia/comfyui-webhook-http"
+    "https://github.com/Ser-Hilary/SDXL_sizing"
 )
 
 CHECKPOINT_MODELS=(

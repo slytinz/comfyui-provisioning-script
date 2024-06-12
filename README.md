@@ -17,5 +17,9 @@ A provisioning script for ComfyUI Deployment
 - Allows admin powers to be performed, such as installing custom nodes and models
 
 **comfyui-webhook-http**
-- https://github.com/abel-garcia/comfyui-webhook-http"
+- https://github.com/abel-garcia/comfyui-webhook-http
 - Automate the process of saving images and notifying a specified endpoint upon image creation
+
+**SDXL_sizing**
+- https://github.com/Ser-Hilary/SDXL_sizing
+- SDXL conditioning sizing Node for ComfyUI
