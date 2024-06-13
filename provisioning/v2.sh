@@ -152,10 +152,11 @@ function provisioning_print_end() {
 
 # Download from $1 URL to $2 file path
 function provisioning_download() {
-    # Check if the file exists
-    if [ -f "$2" ]; then
+    # Check if the file exists (temporary fix)
+    FILE_PATH = "opt/ComfyUI/models/checkpoints/sd_xl_refiner_1.0.safetensors"
+    if [ -f "$FILE_PATH" ]; then
         echo "File exists. Deleting..."
-        rm "$2"
+        rm "$FILE_PATH"
     fi
     wget -qNc --no-cache --content-disposition --show-progress -e dotbytes="${3:-4M}" -P "$2" "$1"
 
