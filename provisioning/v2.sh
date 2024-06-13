@@ -73,11 +73,10 @@ function provisioning_start() {
     provisioning_get_nodes
     provisioning_install_python_packages
     # Check if the file exists (temporary fix)
-    FILE_PATH = "${WORKSPACE}/ComfyUI/models/checkpoints/sd_xl_refiner_1.0.safetensors"
-    echo "DELETING REFINER...."
-    if [ -f "${FILE_PATH}" ]; then
+    echo "DELETING REFINER (located in ${WORKSPACE}/ComfyUI/models/checkpoints/sd_xl_refiner_1.0.safetensors)...."
+    if [ -f "${WORKSPACE}/ComfyUI/models/checkpoints/sd_xl_refiner_1.0.safetensors" ]; then
         echo "File exists. Deleting..."
-        rm -r "${FILE_PATH}"
+        rm -r "${WORKSPACE}/ComfyUI/models/checkpoints/sd_xl_refiner_1.0.safetensors"
     fi
     provisioning_get_models \
         "${WORKSPACE}/ComfyUI/models/checkpoints" \
