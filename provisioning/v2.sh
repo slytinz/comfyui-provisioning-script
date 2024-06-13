@@ -74,6 +74,7 @@ function provisioning_start() {
     provisioning_install_python_packages
     # Check if the file exists (temporary fix)
     FILE_PATH = "${WORKSPACE}/ComfyUI/models/checkpoints/sd_xl_refiner_1.0.safetensors"
+    echo "DELETING REFINER...."
     if [ -f "${FILE_PATH}" ]; then
         echo "File exists. Deleting..."
         rm -r "${FILE_PATH}"
