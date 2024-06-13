@@ -152,6 +152,11 @@ function provisioning_print_end() {
 
 # Download from $1 URL to $2 file path
 function provisioning_download() {
+    # Check if the file exists
+    if [ -f "$2" ]; then
+        echo "File exists. Deleting..."
+        rm "$2"
+    fi
     wget -qNc --no-cache --content-disposition --show-progress -e dotbytes="${3:-4M}" -P "$2" "$1"
 
 }
